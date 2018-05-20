@@ -1,0 +1,25 @@
+use ejemplo;
+
+CREATE TABLE departamentos (
+dept_no TINYINT(2) PRIMARY KEY,
+dnombre VARCHAR(15),
+loc VARCHAR(15)
+) ENGINE=InnoDB;
+
+CREATE TABLE empleados (
+emp_no SMALLINT(4) PRIMARY KEY,
+apellido VARCHAR(10),
+oficio VARCHAR(10),
+dir SMALLINT,
+fecha_alt DATE,
+salario FLOAT(6,2),
+comision FLOAT(6,2),
+dept_no TINYINT(2) NOT NULL,
+CONSTRAINT FK_DEP FOREIGN KEY (dept_no) REFERENCES
+departamentos(dept_no)
+) ENGINE=InnoDB;
+
+INSERT INTO departamentos VALUES (10,'CONTABILIDAD','SEVILLA');
+INSERT INTO departamentos VALUES (20,'INVESTIGACIÓN','MADRID');
+INSERT INTO departamentos VALUES (30,'VENTAS','BARCELONA');
+INSERT INTO departamentos VALUES (40,'PRODUCCIÓN','BILBAO');
